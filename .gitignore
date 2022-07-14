@@ -15,7 +15,4 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
-bin/Agenda.class
-bin/App.class
-bin/Local.class
-bin/Sessao.class
+bin/
