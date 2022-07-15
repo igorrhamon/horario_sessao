@@ -1,6 +1,8 @@
+package enums;
+
 import java.time.ZoneId;
 
-public enum TimeZones {
+public enum TimeZonesAgenda {
     
     SAO_PAULO("São Paulo", ZoneId.of("America/Sao_Paulo")),
     PARIS("Paris", ZoneId.of("Europe/Paris")),
@@ -19,7 +21,7 @@ public enum TimeZones {
     private String name;
     private ZoneId zoneId;
 
-    TimeZones(String name, ZoneId zoneId) {
+    TimeZonesAgenda(String name, ZoneId zoneId) {
         this.name = name;
         this.zoneId = zoneId;
     }

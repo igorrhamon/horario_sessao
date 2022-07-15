@@ -1,23 +1,28 @@
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 
+import enums.TimeZonesAgenda;
+import model.Agenda;
+import model.Local;
+import service.ExibeAgenda;
+import service.InsereLocal;
+import service.agenda_observer.ImprimeListener;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        List<TimeZones> locais = new ArrayList<>();
-        locais.add(TimeZones.SAO_PAULO);
-        locais.add(TimeZones.PARIS);
-        locais.add(TimeZones.LONDON);
-        locais.add(TimeZones.NEW_YORK);
-        locais.add(TimeZones.TOKYO);
-        locais.add(TimeZones.SYDNEY);
+        List<Local> locais = new ArrayList<>();
+        locais.add(new Local("São Paulo", TimeZonesAgenda.SAO_PAULO.getZoneId()));
+        locais.add(new Local("Lisboa", TimeZonesAgenda.LISBON.getZoneId()));
+        locais.add(new Local("Paris", TimeZonesAgenda.PARIS.getZoneId()));
+        
         Agenda agenda = new Agenda(locais);
-        agenda.exibeSessoes();
-        // agenda.exibeSessoesPorLocal(TimeZones.SAO_PAULO);
-        // agenda.exibeSessoesPorLocal(TimeZones.PARIS);
-        // agenda.exibeSessoesPorLocal(TimeZones.LONDON);
+        
+        // ExibeAgenda exibeAgenda = new ExibeAgenda(agenda);
+        // exibeAgenda.exibeSessoesPorLocal(TimeZonesAgenda.SAO_PAULO);
+        
+        InsereLocal insereLocal = new InsereLocal(agenda);
+        insereLocal.eventManager.addListener("insereLocal", new ImprimeListener());
+        insereLocal.insereLocal("New York", TimeZonesAgenda.NEW_YORK.getZoneId());
         
 
     }
